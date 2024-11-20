@@ -16,22 +16,6 @@
     "overall_gcs": 8.66
   },
   {
-    "model": "Human",
-    "attr_qa_sr": 98.95,
-    "spatial_qa_sr": 92.31,
-    "nav_sr": 96.55,
-    "nav_gcs": 97.84,
-    "nav_spl": 82.28,
-    "obj_inter_sr": 97.75,
-    "obj_inter_gcs": 99.44,
-    "obj_inter_spl": 90.73,
-    "social_inter_sr": 100.00,
-    "social_inter_gcs": 100.00,
-    "social_inter_spl": 89.96,
-    "overall_sr": 97.26,
-    "overall_gcs": 97.94
-  },
-  {
     "model": "GPT-4o",
     "attr_qa_sr": 37.78,
     "spatial_qa_sr": 34.00,

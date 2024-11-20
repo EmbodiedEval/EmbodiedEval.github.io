@@ -85,7 +85,8 @@ var colorFormatterAttrQA = function (cell, formatterParams) {
     var endColor = (formatterParams && formatterParams.endColor) || defaults.endColor;
 
     // Normalize the value between 0 and 1
-    var normalizedValue = (value - min) / (max - min);
+    // var normalizedValue = (value - min) / (max - min);
+    var normalizedValue = Math.max(0, Math.min(1, (value - min) / (max - min)));
 
     // Compute the color gradient 
     var red = Math.floor(startColor.r + (endColor.r - startColor.r) * normalizedValue);
@@ -120,7 +121,8 @@ var colorFormatterSpaQA = function (cell, formatterParams) {
     var endColor = (formatterParams && formatterParams.endColor) || defaults.endColor;
 
     // Normalize the value between 0 and 1
-    var normalizedValue = (value - min) / (max - min);
+    // var normalizedValue = (value - min) / (max - min);
+    var normalizedValue = Math.max(0, Math.min(1, (value - min) / (max - min)));
 
     // Compute the color gradient 
     var red = Math.floor(startColor.r + (endColor.r - startColor.r) * normalizedValue);
@@ -156,7 +158,8 @@ var colorFormatterNav = function (cell, formatterParams) {
     var endColor = (formatterParams && formatterParams.endColor) || defaults.endColor;
 
     // Normalize the value between 0 and 1
-    var normalizedValue = (value - min) / (max - min);
+    // var normalizedValue = (value - min) / (max - min);
+    var normalizedValue = Math.max(0, Math.min(1, (value - min) / (max - min)));
 
     // Compute the color gradient 
     var red = Math.floor(startColor.r + (endColor.r - startColor.r) * normalizedValue);
@@ -191,7 +194,8 @@ var colorFormatterObjInter = function (cell, formatterParams) {
     var endColor = (formatterParams && formatterParams.endColor) || defaults.endColor;
 
     // Normalize the value between 0 and 1
-    var normalizedValue = (value - min) / (max - min);
+    // var normalizedValue = (value - min) / (max - min);
+    var normalizedValue = Math.max(0, Math.min(1, (value - min) / (max - min)));
 
     // Compute the color gradient 
     var red = Math.floor(startColor.r + (endColor.r - startColor.r) * normalizedValue);
@@ -226,7 +230,8 @@ var colorFormatterSocialInter = function (cell, formatterParams) {
     var endColor = (formatterParams && formatterParams.endColor) || defaults.endColor;
 
     // Normalize the value between 0 and 1
-    var normalizedValue = (value - min) / (max - min);
+    // var normalizedValue = (value - min) / (max - min);
+    var normalizedValue = Math.max(0, Math.min(1, (value - min) / (max - min)));
 
     // Compute the color gradient 
     var red = Math.floor(startColor.r + (endColor.r - startColor.r) * normalizedValue);
@@ -261,7 +266,7 @@ var colorFormatterOveral = function (cell, formatterParams) {
     var endColor = (formatterParams && formatterParams.endColor) || defaults.endColor;
 
     // Normalize the value between 0 and 1
-    var normalizedValue = (value - min) / (max - min);
+    var normalizedValue = Math.max(0, Math.min(1, (value - min) / (max - min)));
 
     // Compute the color gradient 
     var red = Math.floor(startColor.r + (endColor.r - startColor.r) * normalizedValue);
@@ -276,10 +281,12 @@ var colorFormatterOveral = function (cell, formatterParams) {
 
 document.addEventListener('DOMContentLoaded', function () {
     Promise.all([
-        fetch('website/data/embodiedeval_data.json').then(response => response.json())
+        fetch('website/data/embodiedeval_data.json').then(response => response.json()),
+        fetch('website/data/add_human.json').then(response => response.json()),
     ])
         .then(([
-            embodiedeval_data
+            embodiedeval_data,
+            add_human
         ]) => {
             var getColumnMinMax = (data, field) => {
                 let values = data.map(item => item[field]).filter(val => val !== "-").map(Number);
@@ -337,8 +344,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     title: "Overall",
                     headerHozAlign: "center",
                     columns: [
-                        { title: "SR", field: "overall_sr", hozAlign: "center", formatter: colorFormatterOveral, minWidth: 70},
-                        { title: "GcS", field: "overall_gcs", hozAlign: "center", formatter: colorFormatterOveral, minWidth: 70}
+                        { title: "SR", field: "overall_sr", sorter: "number", hozAlign: "center", formatter: colorFormatterOveral, minWidth: 70},
+                        { title: "GcS", field: "overall_gcs", sorter: "number", hozAlign: "center", formatter: colorFormatterOveral, minWidth: 70}
                     ]
                 },   
             ];
@@ -359,7 +366,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 responsiveLayoutCollapseStartOpen: false,
                 movableColumns: false,
                 initialSort: [
-                    { column: "overall_performance", dir: "desc" },
+                    { column: "overall_sr", dir: "desc" },
+                    { column: "overall_gcs", dir: "desc" },
+                ],
+                columnDefaults: {
+                    tooltip: true,
+                },
+                columns: embodiedeval_columns
+            });
+
+            var add_human_table = new Tabulator("#add_human-main-table", {
+                data: add_human,
+                layout: "fitColumns",
+                responsiveLayout: "collapse",
+                responsiveLayoutCollapseStartOpen: false,
+                movableColumns: false,
+                initialSort: [
+                    { column: "overall_sr", dir: "desc" },
+                    { column: "overall_gcs", dir: "desc" },
                 ],
                 columnDefaults: {
                     tooltip: true,
