@@ -64,7 +64,7 @@
     <noscript>
         <p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101339888ns.gif" /></p>
     </noscript>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         var toggles = document.querySelectorAll('.toggle-section');
@@ -112,17 +112,19 @@
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
                         <h1 class="title is-2 publication-title is-bold is-hoverable">
-                            <img src="website/img/logo.png" alt="logo" width="50" height="50" />
+                            <!--img src="website/img/logo.png" alt="logo" width="50" height="50" /-->
                             EmbodiedEval
                         </h1> 
                         <h1 class="title is-2 publication-title">
                             Evaluate Multimodal LLMs as Embodied Agents
                         </h1>
-                        <div class="is-size-4 publication-authors">
+                        <!--div class="is-size-4 publication-authors">
                             <span class="author-block">
                                 Anonymous
                             </span>
-                        </div>
+                        </div-->
+                        
+                    
                         <!-- 注销掉作者和单位 TODO:替换为实际的作者和单位 -->
                         <!-- <div class="is-size-5 publication-authors">
                             <span class="author-block">
@@ -194,11 +196,11 @@
                                 <!-- arXiv Link. -->
                                 <span class="link-block">
                                     <a class="btn btn-outline-dark"
-                                        role="button">
+                                        role="button" href="https://arxiv.org/abs/2501.11858">
                                         <span class="icon">
                                             <i class="ai ai-arxiv"></i>
                                         </span>
-                                        <span>arXiv (Coming Soon)</span>
+                                        <span>Paper</span>
                                     </a> &nbsp;&nbsp;
                                 </span>
                                 <!-- Code Link. -->
@@ -215,7 +217,7 @@
                                 <span class="link-block">
                                     <a class="btn btn-outline-dark" role="button" style="display: inline-flex; align-items: center;" href="https://huggingface.co/datasets/EmbodiedEval/EmbodiedEval">
                                         <span class="icon" style="display: inline-flex; align-items: center;">
-                                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="width: 20px; height: 18px; margin-right: 5px;">
+                                            <img src="website/img/huggingface-icon.png" alt="Hugging Face" style="width: 20px; height: 18px; margin-right: 5px;">
                                         </span>
                                         <span>Dataset</span>
                                     </a> &nbsp;&nbsp;
@@ -230,6 +232,70 @@
         </div>
     </section>
 
+    
+    <h2 class="title is-2" style="text-align: center;">Examples</h2> 
+    <div style="display: flex; justify-content: center; gap: 10px; max-width: 600px; margin: auto;">
+      <div style="width:100%; max-width:600px; margin:auto;">
+        <iframe width="400" height="400" 
+                src="website/video/case1.mp4" 
+                title="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      </div>
+
+      <div style="width:100%; max-width:600px; margin:auto;">
+        <iframe width="400" height="400" 
+                src="website/video/case2.mp4" 
+                title="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      </div>
+      
+      <div style="width:100%; max-width:600px; margin:auto;">
+        <iframe width="400" height="400" 
+                src="website/video/case3.mp4" 
+                title="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 10px; max-width: 600px; margin: auto;">
+      <div style="width:100%; max-width:600px; margin:auto;">
+        <iframe width="400" height="400" 
+                src="website/video/case4.mp4" 
+                title="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      </div>
+
+      <div style="width:100%; max-width:600px; margin:auto;">
+        <iframe width="400" height="400" 
+                src="website/video/case5.mp4" 
+                title="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      </div>
+      
+      <div style="width:100%; max-width:600px; margin:auto;">
+        <iframe width="400" height="400" 
+                src="website/video/case6.mp4" 
+                title="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      </div>
+    </div>
 
     <section class="hero">
         <div class="container is-max-desktop">
@@ -237,26 +303,26 @@
                 <h2 class="title is-2" style="text-align: center;">Leaderboard</h2>  
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                    <!--li class="nav-item" role="presentation">
                         <button class="nav-link active" id="main-results-tab" data-bs-toggle="tab"
                             data-bs-target="#benchmark-table-content" type="button" role="tab"
                             aria-controls="main-results-tab" aria-selected="true">With Human</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
+                    </li-->
+                    <!--li class="nav-item" role="presentation">
                       <button class="nav-link" id="eurus-code-table-tab" data-bs-toggle="tab"
                           data-bs-target="#eurus-code-table-content" type="button" role="tab"
                           aria-controls="eurus-code-table-tab" aria-selected="false">Only MLLMs</button>
-                  </li>
+                  </li-->
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="benchmark-table-content" role="tabpanel"
                         aria-labelledby="benchmark-table-content">
                         <div id="add_human-main-table"></div>
                     </div>
-                    <div class="tab-pane fade" id="eurus-code-table-content" role="tabpanel"
+                    <!--div class="tab-pane fade" id="eurus-code-table-content" role="tabpanel"
                         aria-labelledby="eurus-code-table-content">
                         <div id="embodiedeval-main-table"></div>
-                    </div>
+                    </div-->
                 </div>
                 </div>
             </div>
